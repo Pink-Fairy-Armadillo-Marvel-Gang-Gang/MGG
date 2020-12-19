@@ -9,7 +9,7 @@ const PORT = 3000;
 
 
 app.get('/', (req, res) => {
-    return res.status(200).send("WE IN HERE GANG GANG!");
+    return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 })
 
 
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(morgan('tiny'));
 app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}`);
+  console.log(`WE BE LISTENING: ${PORT}`);
 });
 
 

@@ -10,7 +10,9 @@ module.exports = {
     './index.js'
   ],
   output: {
-    filename: './bundle.js',
+    publicPath: path.resolve(__dirname, 'dist'),
+    // publicPath: '/',
+    filename: 'bundle.js',
   },
   devServer: {
     publicPath: '/dist/',
