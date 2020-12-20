@@ -1,18 +1,23 @@
 const express = require('express');
 const app = express()
 const mongoose = require('mongoose')
-const path = require('path')
+// const path = require('path')
 const morgan = require('morgan')
 const marvelSchema = require('./model/marvelModel')
 const routes = require('./routes/api')
 const PORT = 3000;
+const App = './components/App.jsx'; // do i have to path this? how do i get the data from this
 // Will code
 // make into a non hard coded token
+
+/*
+
 const { useState, useCallback, useEffect } = require('react');
 const axios = require('axios');
 const accessToken = 'iuhyegedbeuytvdyevdyt3222u7e2uhwjdhbsd'
 const apiUrl = 'http://localhost:3000/api';
 
+const path = require('path');
 // axios.interceptors.request.use(
 //   config => {
 //     config.headers.authorization = `Bearer ${accessToken}`;
@@ -25,7 +30,7 @@ const apiUrl = 'http://localhost:3000/api';
 const authAxios = axios.create({
   baseURL: apiUrl,
   headers: {
-    Authorization: `Bearer ${accessToken}`
+    Authorization: `Bearergit  ${accessToken}`
   }
 })
 
@@ -42,14 +47,23 @@ function App() {
       setRequestError(err.message);
     }
   });
-
+  // return component here
 }
 
+*/
 
 app.get('/', (req, res) => {
     return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 })
 
+/*
+
+// request to userpPge
+app.get('/userPage', (req, res) => {
+  return res.status(200).sendFile(path.resolve(__dirname, '../homepage.js'));
+})
+
+*/
 
 
 
