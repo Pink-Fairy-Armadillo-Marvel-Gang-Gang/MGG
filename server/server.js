@@ -15,7 +15,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('client'));
 
 
-
+// app.get('/profile/:name', function(req,res){
+//     res.render('profile', {person: req.params.name})
+// })
 
 app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, '../client/index.html'));

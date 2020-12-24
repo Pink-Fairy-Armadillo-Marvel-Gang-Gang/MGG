@@ -7,9 +7,20 @@
   //prolly need to import app to get the data?
 // import ________ from _____________
 
+const mysql = require('mysql');
+const cors = require("cors");
+const express = require('express');
+const app = express();
+const Axios = require('axios');
+app.use(express.json());
+app.use(cors())
+// const router = require('express')
 
-const router = require('express')
 /*
+app.get('/profile/:name', function(req,res){
+    res.render('profile', {person: req.params.name})
+})
+
 
 // get request to user database
 router.get('/users', (req, res) => {
@@ -29,8 +40,58 @@ router.get('/users', (req, res) => {
 
 })
 
-
+*/
 // post route to sign up (this will be the redirect to the user database)
+
+
+
+// possible sign up model sql
+
+// const db = mysql.createConnection({
+//   user: "root",
+//   host: "localhost",
+//   password: "password",
+//   database: "LoginSystem",
+// })
+
+app.post('/register', (req, res) => {
+const username = req.body.username;
+const password = req.body.password;
+console.log('test at backend')
+  // db.query("INSERT INTO users (username, password) VALUES (?,?)",
+  //  [username, password],
+  //  (err, result) => {
+  //    console.log(err)
+  //  }
+  // );
+});
+
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+console.log('at login')
+
+  // db.query(
+  // "SELECT * FROM users WHERE username = ? AND password = ?",
+  // [username, password],
+  // (err, result) => {
+  //   if (err) {
+  //     console.log(err)
+  //   } 
+    
+  //     if (result.length > 0) { 
+  //       res.send(result)
+  //     } else {
+  //       res.send({message: "wrong username/password combo"})
+  //     }
+  //   }
+  // )
+  })
+
+
+/*
+
+
 router.post('/signup/users', (req) => {
 
     // declare variable for the data going to usersDB
@@ -55,6 +116,8 @@ router.get('/signup', (req, res) => {
 })
 
 
+*/
+
 
 // -------------------------
 // starting to set up the user's homepage
@@ -68,7 +131,7 @@ router.get('/signup', (req, res) => {
 //     .catch(err) => {
 //         console.log(err)
 //     }
-// })
+// }) 
 
 // // route to signup for signup.html // can we make this a component or js file?
 // router.get('/homepage', (req, res) => {
@@ -76,5 +139,5 @@ router.get('/signup', (req, res) => {
 // })
 
 
-module.exports = Api;
-*/
+module.exports = api;
+
