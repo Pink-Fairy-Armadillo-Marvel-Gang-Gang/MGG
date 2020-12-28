@@ -1,4 +1,10 @@
 // // import path from 'path'
+<<<<<<< HEAD
+=======
+// // import routes from '../routes/api'
+// // import marvelModel  from '../model/marvelModel' 
+// // import path from 'path'
+>>>>>>> newBranch
 
 // // import marvelModel  from '../model/marvelModel' 
 
@@ -8,6 +14,7 @@
 // // import ________ from _____________
 
 // const mysql = require('mysql');
+<<<<<<< HEAD
 // const cors = require("cors");
 // const express = require('express');
 // const app = express();
@@ -16,6 +23,15 @@
 // app.use(cors())
 // const router = require('express');
 // const { ModuleFilenameHelpers } = require('webpack');
+=======
+// // const cors = require("cors");
+// const express = require('express');
+// const app = express();
+// const Axios = require('axios');
+// // app.use(express.json());
+// // app.use(cors())
+// // const router = require('express')
+>>>>>>> newBranch
 
 // /*
 // app.get('/profile/:name', function(req,res){
@@ -46,7 +62,11 @@
 
 
 
+<<<<<<< HEAD
 // // possible sign up model sql
+=======
+// //------ sample sign up model sql
+>>>>>>> newBranch
 
 // // const db = mysql.createConnection({
 // //   user: "root",
@@ -55,7 +75,11 @@
 // //   database: "LoginSystem",
 // // })
 
+<<<<<<< HEAD
 // app.post('/signup', (req, res) => {
+=======
+// app.post('/register', (req, res) => {
+>>>>>>> newBranch
 // const username = req.body.username;
 // const password = req.body.password;
 // console.log('test at backend')
@@ -72,6 +96,7 @@
 //   const password = req.body.password;
 // console.log('at login')
 
+<<<<<<< HEAD
 //   db.query(
 //   "SELECT * FROM users WHERE username = ? AND password = ?",
 //   [username, password],
@@ -87,6 +112,23 @@
 //       }
 //     }
 //   )
+=======
+//   // db.query(
+//   // "SELECT * FROM users WHERE username = ? AND password = ?",
+//   // [username, password],
+//   // (err, result) => {
+//   //   if (err) {
+//   //     console.log(err)
+//   //   } 
+    
+//   //     if (result.length > 0) { 
+//   //       res.send(result)
+//   //     } else {
+//   //       res.send({message: "wrong username/password combo"})
+//   //     }
+//   //   }
+//   // )
+>>>>>>> newBranch
 //   })
 
 
@@ -138,4 +180,10 @@
 // // router.get('/homepage', (req, res) => {
 // //     res.status(200).sendFile(path.join(__dirname, '../client/homepage.html'));
 // // })
+<<<<<<< HEAD
 // module.exports = app
+=======
+
+
+// // module.exports = api;
+>>>>>>> newBranch

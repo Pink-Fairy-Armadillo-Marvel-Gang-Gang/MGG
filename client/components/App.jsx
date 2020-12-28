@@ -1,12 +1,28 @@
 import React from 'react';
+import '../style.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
+import SignUp from '../components/signup';
+import Home from '../components/homepage'
+import { BrowserRouter, Link, Route, Router, Switch } from 'react-router-dom';
+import NewWindow from 'react-new-window'
+import { render } from 'react-dom';
+import HomePage from '../components/homepage';
+import Venom from './VenomInNYC.png'
+import ironman from './Ironman&Buzz.png'
+import grut from './grut.png'
+import deadpool from './deadpool.png'
+import marvelBattle from './marvelBattle.png'
+import avengers from './avengers.png'
+import hulk from './hulk.png'
+import k from './marvel4k.png'
 
-// import '../style.css';
+
 
 
 export default function App() {
+
   // destructure useForm
   const {register, handleSubmit, watch, errors} = useForm();
 
@@ -32,52 +48,30 @@ const [loginStatus, setLoginStatus] = useState('')
 
   // define onSubmit handler function for login
   const onFormSubmit = (data) => {
-      console.log('login', data);
-      setPassword(data.password);
-      setUsername(data.username);
-      console.log('login', data);
+      console.log(data);
+      
+
+    //   const signin = () => {
+    //     axios.get("/homepage", 
+    // //     {
+    // //         username: username,
+    // //         password: password,
+    // // }).then((res) => {
+    // //     if (res.data.message) {
+    // //         setLoginStatus(res.data.message)
+    // //     } else {
+    // //         setLoginStatus(res.data[0].username)
+    // //     }
+    // //     console.log(res)
+    // //   }); 
+    
+    // }
   }
-
-  // define onSubmit handler function for registration
-  const onFormSubmit2 = (data) => {
-    console.log('reg',data);
-    setPasswordReg(data.password);
-    setUsernameReg(data.username);
-    console.log('reg',data);
-    signup();
-}
-
-
-// axios post request // put this function in the form submit
-//   const signup = () => {
-//       Axios.post("http://localhost/8080/register", {
-//           username: usernameReg,
-//           password: passwordReg,
-//   }).then((res) => {
-//       console.log(response);
-//   }); 
-//   }
-
-const signup = () => {
-    axios.post("/signup", {
-        username: username,
-        password: password,
-}).then((res) => {
-    if (res.data.message) {
-        setLoginStatus(res.data.message)
-    } else {
-        setLoginStatus(res.data[0].username)
-    }
-    console.log(res)
-  }); 
-}
-
-
-// console.log('login status',loginStatus)
-  // invoke watch function from useForm destructuring
-
-//   return our html/componenet stuf
+  
 return (
+    <Switch>
+
+    <Route exact path='/'>
     <div>
     <h1>LOGIN</h1>
     <form name="signin" onSubmit={handleSubmit(onFormSubmit)}>
@@ -85,19 +79,29 @@ return (
         <input type="password" name="password" ref={register} placeholder="Password"></input>
         <input type="submit"/>
     </form>
+          <Link to="/signup"><button>Create an Account!</button></Link>
 
-    <h3>login status here here{loginStatus}</h3>
-
-   
-
-    <h1>Registration</h1>
-    <form name="signin" onSubmit={handleSubmit2(onFormSubmit2)}>
-        <input type="text" name="username2" ref={register2} placeholder="Username"></input>
-        <input type="password" name="password2" ref={register2} placeholder="Password"></input>
-        <input type="submit"/>
-    </form>
     </div>
-)
-  
-};
+    <img src={ironman}  className="img" alt="venom" width="280px" height="400px"/>
+    <img src={Venom}  className="img" alt="venom" width="280px" height="400px"/>
+    <img src={grut}  className="img" alt="venom" width="320px" height="400px"/>
+    <img src={deadpool}  className="img" alt="venom" width="320px" height="400px"/>
+      </Route>
+      <Route path='/signup'>
+                    <div>
+                        <SignUp />
+                        <img src={marvelBattle}  className="img" alt="venom" width="360px" height="360px"/>
+                        <img src={k}  className="img" alt="venom" width="575px" height="350px"/>
+                        <img src={hulk}  className="img" alt="venom" width="200px" height="400px"/>
+                    </div>
+    </Route>
 
+    <Route path='/homepage'>
+                    <div>
+                        <HomePage />
+                        <img src={avengers}  className="img" alt="venom" width="360px" height="360px"/>
+                    </div>
+    </Route>
+    </Switch>
+)
+};
