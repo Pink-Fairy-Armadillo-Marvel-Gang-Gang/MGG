@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 })
 
-app.get('/signup', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../client/pages/signup.html'));
-})
+// app.get('/signup', (req, res) => {
+//   res.status(200).sendFile(path.join(__dirname, '../client/pages/signup.html'));
+// })
 
 
 app.use(morgan('tiny'));
