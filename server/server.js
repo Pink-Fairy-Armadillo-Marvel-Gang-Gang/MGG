@@ -5,7 +5,8 @@ const morgan = require('morgan')
 const db = require('./model/marvelModel')
 // const routes = require('./routes/api')
 const PORT = 3000;
-const App = require('../client/components/App.jsx'); 
+// const App = require('../client/components/App.jsx'); 
+
 
 // VM: WE MIGHT NEED TO NPM INSTALL PG-PROMISE BUT NOT SURE
 
@@ -19,27 +20,28 @@ app.use(express.static('client'));
 // })
 
 
-// app.use('/', (req, res) => {
-//   db.createFavoritesTable();
-// });
+app.use('/', (req, res) => {
+  db.createUsersTable();
+  db.createFavoritesTable();
+})
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-// app.post('/signup', (req, res) => {
-//   const username = req.body.username;
-//   const password = req.body.password;
-//   console.log('test at backend')
-//   db.query("INSERT INTO users (username, password) VALUES ($1,$2)",
-//     [username, 
-//       password],
-//     (err, result) => {
-//       console.log(err)
-//     }
-//   );
-// });
-
+app.post('/signup', (req, res) => {
+  const { username } = req.body;
+  const { password } = req.body;
+  console.log(process.env.PG_URI)
+  // console.log('test at backend')
+  db.query('INSERT INTO users (username, password) VALUES ($1, $2)',
+    [username, 
+      password],
+    (err, result) => {
+      if (err) console.log(`SIGNUP ERROR: ${err}`);
+      else console.log(`SIGNUP SUCCESS: ${result}`)
+    });
+});
 
 app.get('/:id', (req, res) => {
   const newFav = req.params;
@@ -47,6 +49,7 @@ app.get('/:id', (req, res) => {
     .then((result) => console.log(result.rows[0]))
     .catch((err) => console.log(`ERROR: ${err}`));
 });
+
 
 
 
