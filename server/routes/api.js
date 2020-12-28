@@ -14,7 +14,8 @@ const app = express();
 const Axios = require('axios');
 app.use(express.json());
 app.use(cors())
-// const router = require('express')
+const router = require('express');
+const { ModuleFilenameHelpers } = require('webpack');
 
 /*
 app.get('/profile/:name', function(req,res){
@@ -54,7 +55,7 @@ router.get('/users', (req, res) => {
 //   database: "LoginSystem",
 // })
 
-app.post('/register', (req, res) => {
+app.post('/signup', (req, res) => {
 const username = req.body.username;
 const password = req.body.password;
 console.log('test at backend')
@@ -71,21 +72,21 @@ app.post('/login', (req, res) => {
   const password = req.body.password;
 console.log('at login')
 
-  // db.query(
-  // "SELECT * FROM users WHERE username = ? AND password = ?",
-  // [username, password],
-  // (err, result) => {
-  //   if (err) {
-  //     console.log(err)
-  //   } 
+  db.query(
+  "SELECT * FROM users WHERE username = ? AND password = ?",
+  [username, password],
+  (err, result) => {
+    if (err) {
+      console.log(err)
+    } 
     
-  //     if (result.length > 0) { 
-  //       res.send(result)
-  //     } else {
-  //       res.send({message: "wrong username/password combo"})
-  //     }
-  //   }
-  // )
+      if (result.length > 0) { 
+        res.send(result)
+      } else {
+        res.send({message: "wrong username/password combo"})
+      }
+    }
+  )
   })
 
 
@@ -137,7 +138,4 @@ router.get('/signup', (req, res) => {
 // router.get('/homepage', (req, res) => {
 //     res.status(200).sendFile(path.join(__dirname, '../client/homepage.html'));
 // })
-
-
-module.exports = api;
-
+module.exports = app

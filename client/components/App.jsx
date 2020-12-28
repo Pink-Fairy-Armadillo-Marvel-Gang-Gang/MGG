@@ -33,17 +33,18 @@ const [loginStatus, setLoginStatus] = useState('')
   // define onSubmit handler function for login
   const onFormSubmit = (data) => {
       console.log('login', data);
-      setPassword(data.password)
-      setUsername(data.username)
-      console.log('login', data)
+      setPassword(data.password);
+      setUsername(data.username);
+      console.log('login', data);
   }
 
   // define onSubmit handler function for registration
   const onFormSubmit2 = (data) => {
     console.log('reg',data);
-    setPasswordReg(data.password2)
-    setUsernameReg(data.username2)
-    console.log('reg',data)
+    setPasswordReg(data.password);
+    setUsernameReg(data.username);
+    console.log('reg',data);
+    signup();
 }
 
 
@@ -57,8 +58,8 @@ const [loginStatus, setLoginStatus] = useState('')
 //   }); 
 //   }
 
-const login = () => {
-    axios.post("/login", {
+const signup = () => {
+    axios.post("/signup", {
         username: username,
         password: password,
 }).then((res) => {
@@ -67,7 +68,7 @@ const login = () => {
     } else {
         setLoginStatus(res.data[0].username)
     }
-    console.log(loginStatus)
+    console.log(res)
   }); 
 }
 
@@ -100,4 +101,3 @@ return (
   
 };
 
-export default App
