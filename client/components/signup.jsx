@@ -23,6 +23,7 @@ return (
         <input type="password" name="password" ref={register} placeholder="Password"></input>
         <input type="text" name="secret" ref={register}  placeholder="Favorite Marvel Characeter"></input>
         <input type="submit"/>
+          
     </form>
     </div>
 )

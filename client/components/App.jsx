@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
@@ -8,19 +9,25 @@ import { BrowserRouter, Link, Route, Router, Switch } from 'react-router-dom';
 import NewWindow from 'react-new-window'
 import { render } from 'react-dom';
 import HomePage from '../components/homepage';
+import Venom from './VenomInNYC.png'
+import ironman from './Ironman&Buzz.png'
+import grut from './grut.png'
+import deadpool from './deadpool.png'
+import marvelBattle from './marvelBattle.png'
+import avengers from './avengers.png'
+import hulk from './hulk.png'
+import k from './marvel4k.png'
 
 
 
-class App extends React.Component() {
 
-    constructor() {
-        super();
+export default function App() {
 
   // destructure useForm
-    const {register, handleSubmit, watch, errors} = useForm();
+  const {register, handleSubmit, watch, errors} = useForm();
   // define onSubmit handler function
-    const onFormSubmit = (data) => {
-        console.log(data);
+  const onFormSubmit = (data) => {
+      console.log(data);
       
 
     //   const signin = () => {
@@ -39,36 +46,41 @@ class App extends React.Component() {
     
     // }
   }
-}
 
-    render(){
-    return (
-        <Switch>
 
-        <Route exact path='/'>
-        <div>
-        <form name="signin" onSubmit={this.props.handleSubmit(this.props.onFormSubmit)}>
-            <input type="text" name="username" ref={this.props.register} placeholder="Username"></input>
-            <input type="password" name="password" ref={this.props.register} placeholder="Password"></input>
-            <input type="submit"/>
-        </form>
+return (
+    <Switch>
+
+    <Route exact path='/'>
+    <div>
+    <form name="signin" onSubmit={handleSubmit(onFormSubmit)}>
+        <input type="text" name="username" ref={register} placeholder="Username"></input>
+        <input type="password" name="password" ref={register} placeholder="Password"></input>
+        <input type="submit"/>
+    </form>
           <Link to="/signup"><button>Create an Account!</button></Link>
-        </div>
-        </Route>
-        <Route path='/signup'>
+
+    </div>
+    <img src={ironman}  className="img" alt="venom" width="280px" height="400px"/>
+    <img src={Venom}  className="img" alt="venom" width="280px" height="400px"/>
+    <img src={grut}  className="img" alt="venom" width="320px" height="400px"/>
+    <img src={deadpool}  className="img" alt="venom" width="320px" height="400px"/>
+      </Route>
+      <Route path='/signup'>
                     <div>
                         <SignUp />
+                        <img src={marvelBattle}  className="img" alt="venom" width="360px" height="360px"/>
+                        <img src={k}  className="img" alt="venom" width="575px" height="350px"/>
+                        <img src={hulk}  className="img" alt="venom" width="200px" height="400px"/>
                     </div>
-        </Route>
+    </Route>
 
-        <Route path='/homepage'>
+    <Route path='/homepage'>
                     <div>
                         <HomePage />
+                        <img src={avengers}  className="img" alt="venom" width="360px" height="360px"/>
                     </div>
-        </Route>
-        </Switch>
-    );
-    }   
+    </Route>
+    </Switch>
+)
 };
-
-export default App;
