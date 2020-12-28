@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 const React = require('react');
 const axios = require('axios');
 const { useState } = require('react');
 const { useForm } = require("react-hook-form");
+=======
+import React from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+import { useForm } from "react-hook-form";
+>>>>>>> will/main
 
 // import '../style.css';
 
@@ -21,6 +28,7 @@ function App() {
 
 
 //use react hooks
+<<<<<<< HEAD
   const [usernameReg, setUsernameReg] = useState('')
   const [passwordReg, setPasswordReg] = useState('')
 
@@ -28,6 +36,15 @@ function App() {
   const [password, setPassword] = useState('')
 
   const [loginStatus, setLoginStatus] = useState('')
+=======
+const [usernameReg, setUsernameReg] = useState('')
+const [passwordReg, setPasswordReg] = useState('')
+
+const [username, setUsername] = useState('')
+const [password, setPassword] = useState('')
+
+const [loginStatus, setLoginStatus] = useState('')
+>>>>>>> will/main
 
 
   // define onSubmit handler function for login
@@ -36,10 +53,13 @@ function App() {
       setPassword(data.password);
       setUsername(data.username);
       console.log('login', data);
+<<<<<<< HEAD
       // vm: store username and password as environment variables to use when quering database? 
       process.env.username = data.username;
       process.env.password = data.password;
       
+=======
+>>>>>>> will/main
   }
 
   // define onSubmit handler function for registration
@@ -48,9 +68,12 @@ function App() {
     setPasswordReg(data.password);
     setUsernameReg(data.username);
     console.log('reg',data);
+<<<<<<< HEAD
     // vm: store username and password as environment variables to use when quering database? 
     process.env.username = data.username;
     process.env.password = data.password;
+=======
+>>>>>>> will/main
     signup();
 }
 
@@ -108,4 +131,7 @@ return (
   
 };
 
+<<<<<<< HEAD
 export default App
+=======
+>>>>>>> will/main
