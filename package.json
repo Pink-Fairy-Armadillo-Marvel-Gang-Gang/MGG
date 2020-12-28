@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "babel-preset-react": "^6.24.1",
     "dotenv": "^8.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",

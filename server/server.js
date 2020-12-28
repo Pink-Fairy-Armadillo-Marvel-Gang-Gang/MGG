@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const morgan = require('morgan')
 const db = require('./model/marvelModel')
-const routes = require('./routes/api')
+// const routes = require('./routes/api')
 const PORT = 3000;
 const App = require('../client/components/App.jsx'); 
 
@@ -19,9 +19,9 @@ app.use(express.static('client'));
 // })
 
 
-app.use('/', (req, res) => {
-  db.createFavoritesTable();
-});
+// app.use('/', (req, res) => {
+//   db.createFavoritesTable();
+// });
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));

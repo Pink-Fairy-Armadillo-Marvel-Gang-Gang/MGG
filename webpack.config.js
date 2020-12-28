@@ -32,7 +32,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-                presets: ['@babel/preset-env', '@babel/preset-react']
+                presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
@@ -42,12 +42,12 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        use: 'url-loader'
+        use: 'url-loader',
       },    
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
