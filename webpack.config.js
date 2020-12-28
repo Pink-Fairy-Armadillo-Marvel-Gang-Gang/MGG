@@ -1,6 +1,8 @@
 //we're gonna first need the exports for the module and put in our mode
 // you got this :-)
 // import path from 'path'
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 
 module.exports = {
@@ -10,8 +12,7 @@ module.exports = {
     // 'signup' : './client/pages/signup.js',
   },
   output: {
-    path : __dirname + './dist',
-    publicPath: '/',
+    path: __dirname + './dist',
     filename: 'bundle.js',
   },
   devServer: {
@@ -32,7 +33,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-                presets: ['@babel/preset-env', '@babel/preset-react']
+                presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
@@ -42,11 +43,16 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        use: 'url-loader'
-      }    
+        use: 'url-loader',
+      },    
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
-} 
+    extensions: ['.js', '.jsx'],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './client/index.html',
+    }),
+  ],
+};

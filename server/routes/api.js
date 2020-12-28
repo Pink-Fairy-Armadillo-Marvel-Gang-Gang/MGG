@@ -1,23 +1,28 @@
 // // import path from 'path'
-// // import routes from '../routes/api'
+
 // // import marvelModel  from '../model/marvelModel' 
-// // import path from 'path'
-// // import marvelModel  from '../model/marvelModel' 
+
+
 // // import userModel from '../model/userModel'
 //   //prolly need to import app to get the data?
 // // import ________ from _____________
+
 // const mysql = require('mysql');
-// // const cors = require("cors");
+// const cors = require("cors");
 // const express = require('express');
 // const app = express();
 // const Axios = require('axios');
-// // app.use(express.json());
-// // app.use(cors())
-// // const router = require('express')
+// app.use(express.json());
+// app.use(cors())
+// const router = require('express');
+// const { ModuleFilenameHelpers } = require('webpack');
+
 // /*
 // app.get('/profile/:name', function(req,res){
 //     res.render('profile', {person: req.params.name})
 // })
+
+
 // // get request to user database
 // router.get('/users', (req, res) => {
 //   // look for the user in the database
@@ -33,48 +38,41 @@
 //     }
 //     // err handler
 //     .catch (err) => {console.log(err)}
+
 // })
+
 // */
 // // post route to sign up (this will be the redirect to the user database)
-// //------ sample sign up model sql
-// // const db = mysql.createConnection({
-// //   user: "root",
-// //   host: "localhost",
-// //   password: "password",
-// //   database: "LoginSystem",
-// // })
-// app.post('/register', (req, res) => {
-// const username = req.body.username;
-// const password = req.body.password;
-// console.log('test at backend')
-//   // db.query("INSERT INTO users (username, password) VALUES (?,?)",
-//   //  [username, password],
-//   //  (err, result) => {
-//   //    console.log(err)
-//   //  }
-//   // );
-// });
+
+
 // app.post('/login', (req, res) => {
 //   const username = req.body.username;
 //   const password = req.body.password;
 // console.log('at login')
-//   // db.query(
-//   // "SELECT * FROM users WHERE username = ? AND password = ?",
-//   // [username, password],
-//   // (err, result) => {
-//   //   if (err) {
-//   //     console.log(err)
-//   //   } 
-//   //     if (result.length > 0) { 
-//   //       res.send(result)
-//   //     } else {
-//   //       res.send({message: "wrong username/password combo"})
-//   //     }
-//   //   }
-//   // )
+
+//   db.query(
+//   "SELECT * FROM users WHERE username = ? AND password = ?",
+//   [username, password],
+//   (err, result) => {
+//     if (err) {
+//       console.log(err)
+//     } 
+    
+//       if (result.length > 0) { 
+//         res.send(result)
+//       } else {
+//         res.send({message: "wrong username/password combo"})
+//       }
+//     }
+//   )
 //   })
+
+
 // /*
+
+
 // router.post('/signup/users', (req) => {
+
 //     // declare variable for the data going to usersDB
 // let user = new userModel({ name: req.username, password: req.password }); // check use of Model here
 //   // save new user
@@ -93,7 +91,11 @@
 // router.get('/signup', (req, res) => {
 //     res.status(200).sendFile(path.join(__dirname, '../client/signup.html'));
 // })
+
+
 // */
+
+
 // // -------------------------
 // // starting to set up the user's homepage
 // // router.get('/homepage/search', (req, res) => {
@@ -111,4 +113,4 @@
 // // router.get('/homepage', (req, res) => {
 // //     res.status(200).sendFile(path.join(__dirname, '../client/homepage.html'));
 // // })
-// // module.exports = api;
+// module.exports = app
