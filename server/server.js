@@ -1,12 +1,11 @@
 const express = require('express')
 const app = express()
-// const path = require('path')
+const path = require('path')
 const morgan = require('morgan')
 const db = require('./model/marvelModel')
 const routes = require('./routes/api')
-const { v4: uuidv4 } = require('uuid')
 const PORT = 3000;
-const App = require('../client/components/App'); // do i have to path this? how do i get the data from this
+const App = require('../client/components/App.jsx'); 
 
 // VM: WE MIGHT NEED TO NPM INSTALL PG-PROMISE BUT NOT SURE
 
@@ -25,22 +24,21 @@ app.use('/', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
-})
-
-app.post('/signup', (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  console.log('test at backend')
-  db.query("INSERT INTO users (id, username, password) VALUES ($1,$2, $3)",
-    [uuidv4(), 
-      username, 
-      password],
-    (err, result) => {
-      console.log(err)
-    }
-  );
+  res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
+
+// app.post('/signup', (req, res) => {
+//   const username = req.body.username;
+//   const password = req.body.password;
+//   console.log('test at backend')
+//   db.query("INSERT INTO users (username, password) VALUES ($1,$2)",
+//     [username, 
+//       password],
+//     (err, result) => {
+//       console.log(err)
+//     }
+//   );
+// });
 
 
 app.get('/:id', (req, res) => {

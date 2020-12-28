@@ -1,6 +1,8 @@
 //we're gonna first need the exports for the module and put in our mode
 // you got this :-)
 // import path from 'path'
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 
 module.exports = {
@@ -9,7 +11,7 @@ module.exports = {
     __dirname + '/client/index.js',
   ],
   output: {
-    path : __dirname + './dist',
+    path: __dirname + './dist',
     filename: 'bundle.js',
   },
   devServer: {
@@ -41,10 +43,15 @@ module.exports = {
       {
         test: /\.(png|jpg|gif)$/i,
         use: 'url-loader'
-      }    
+      },    
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx']
-  }
-} 
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './client/index.html',
+    }),
+  ],
+};

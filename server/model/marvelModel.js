@@ -12,45 +12,45 @@ const pool = new Pool({
 pool.on("connect", () => console.log("connected to database..."));
 
 // make sure the user and favorites tables are created
-const createUsersTable = () => {
-  const queryText = 
-  `CREATE TABLE IF NOT EXISTS
-    users(
-      id UUID PRIMARY KEY,
-      username VARCHAR(128) UNIQUE NOT NULL,
-      password VARCHAR(128) NOT NULL,
-    )`;
+// const createUsersTable = () => {
+//   const queryText = 
+//   `CREATE TABLE IF NOT EXISTS
+//     users(
+//       id SERIAL PRIMARY KEY,
+//       username VARCHAR(128) UNIQUE NOT NULL,
+//       password VARCHAR(128) NOT NULL,
+//     )`;
   
-  pool.query(queryText) 
-    .then((res) => {
-      console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      console.log(err);
-      pool.end();
-    });
-};
+//   pool.query(queryText) 
+//     .then((res) => {
+//       console.log(res);
+//       pool.end();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       pool.end();
+//     });
+// };
 
-const createFavoritesTable = () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-    favorites(
-      id UUID PRIMARY KEY,
-      charName TEXT NOT NULL,
-      id_marvel UUID NOT NULL,
-      FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
-    )`;
+// const createFavoritesTable = () => {
+//   const queryText = `CREATE TABLE IF NOT EXISTS
+//     favorites(
+//       id SERIAL PRIMARY KEY,
+//       charName TEXT NOT NULL,
+//       id_marvel UUID NOT NULL,
+//       FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+//     )`;
     
-  pool.query(queryText)
-    .then((res) => {
-      console.log(res);
-      pool.end();
-    })
-    .catch((err) => {
-      console.log(err);
-      pool.end();
-    });
-};
+//   pool.query(queryText)
+//     .then((res) => {
+//       console.log(res);
+//       pool.end();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       pool.end();
+//     });
+// };
 
 
 
@@ -62,6 +62,6 @@ module.exports = {
     console.log("executed query", text);
     return pool.query(text, params, callback);
   },
-  createFavoritesTable,
-  createUsersTable,
+  // createFavoritesTable,
+  // createUsersTable,
 };

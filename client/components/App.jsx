@@ -1,12 +1,12 @@
-import React from 'react';
-import axios from 'axios';
-import { useState } from 'react';
-import { useForm } from "react-hook-form";
+const React = require('react');
+const axios = require('axios');
+const { useState } = require('react');
+const { useForm } = require("react-hook-form");
 
 // import '../style.css';
 
 
-export default function App() {
+function App() {
   // destructure useForm
   const {register, handleSubmit, watch, errors} = useForm();
 
@@ -21,13 +21,13 @@ export default function App() {
 
 
 //use react hooks
-const [usernameReg, setUsernameReg] = useState('')
-const [passwordReg, setPasswordReg] = useState('')
+  const [usernameReg, setUsernameReg] = useState('')
+  const [passwordReg, setPasswordReg] = useState('')
 
-const [username, setUsername] = useState('')
-const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-const [loginStatus, setLoginStatus] = useState('')
+  const [loginStatus, setLoginStatus] = useState('')
 
 
   // define onSubmit handler function for login
@@ -108,3 +108,4 @@ return (
   
 };
 
+export default App
