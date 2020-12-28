@@ -5,11 +5,13 @@
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: [
-    __dirname + '/client/index.js',
-  ],
+  entry: {
+    'index' : './client/index.js',
+    // 'signup' : './client/pages/signup.js',
+  },
   output: {
     path : __dirname + './dist',
+    publicPath: '/',
     filename: 'bundle.js',
   },
   devServer: {
@@ -17,8 +19,8 @@ module.exports = {
     compress: true,
     publicPath: '/dist',
     proxy: {
-      '*': {
-        target: 'http://localhost:3000',
+      '/': {
+        target: 'http://localhost:3000/',
       },
     },
   }, 
