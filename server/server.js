@@ -37,7 +37,17 @@ app.get('/userPage', (req, res) => {
 
 */
 
-
+// app.post('/signup', (req, res) => {
+// const username = req.body.username;
+// const password = req.body.password;
+// console.log('test at backend')
+//   // db.query("INSERT INTO users (username, password) VALUES (?,?)",
+//   //  [username, password],
+//   //  (err, result) => {
+//   //    console.log(err)
+//   //  }
+//   // );
+// });
 
 app.use(morgan('tiny'));
 app.listen(PORT, () => {
