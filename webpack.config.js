@@ -1,26 +1,27 @@
 //we're gonna first need the exports for the module and put in our mode
 // you got this :-)
-const path = require('path')
-
+// import path from 'path'
 
 
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: [
-    './index.js'
+    __dirname + '/client/index.js',
   ],
   output: {
-    filename: './bundle.js',
+    path : __dirname + './dist',
+    filename: 'bundle.js',
   },
   devServer: {
-    publicPath: '/dist/',
+    port: 8080,
+    compress: true,
+    publicPath: '/dist',
     proxy: {
       '*': {
         target: 'http://localhost:3000',
-      }
-    }, 
-    port: 8080,
-  },
+      },
+    },
+  }, 
   module: {
     rules: [
       {
