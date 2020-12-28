@@ -20,35 +20,72 @@ app.use(express.static('client'));
 // })
 
 
-app.use('/', (req, res) => {
-  db.createUsersTable();
-  db.createFavoritesTable();
-})
+// app.use('/', (req, res) => {
+  
+//   // db.createFavoritesTable();
+// })
 
 app.get('/', (req, res) => {
+  db.createUsersTable();
   res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 app.post('/signup', (req, res) => {
+  db.createUsersTable();
   const { username } = req.body;
   const { password } = req.body;
   console.log(process.env.PG_URI)
+  console.log(username, password)
   // console.log('test at backend')
   db.query('INSERT INTO users (username, password) VALUES ($1, $2)',
     [username, 
       password],
     (err, result) => {
-      if (err) console.log(`SIGNUP ERROR: ${err}`);
-      else console.log(`SIGNUP SUCCESS: ${result}`)
+      if (err == 'error: duplicate key value violates unique constraint "users_username_key"') console.log('Username already exists')
+      else if (err) console.log(err);
+      else console.log('SIGNUP SUCCESSFUL!');
     });
 });
 
-app.get('/:id', (req, res) => {
-  const newFav = req.params;
-  db.query('SELECT * FROM people WHERE people._id = $1', [req.params.id])
-    .then((result) => console.log(result.rows[0]))
-    .catch((err) => console.log(`ERROR: ${err}`));
-});
+
+app.post('/login', (req, res) => {
+  const { username } = req.body;
+  const { password } = req.body;
+  console.log('at login')
+
+  db.query(
+  "SELECT * FROM users WHERE username = $1 AND password = $2;",
+  [username, password],
+  (err, loginResult) => {
+    if (err) console.log(`LOGIN ERROR: ${err}`)
+    else if (loginResult.rows.length === 0) {
+      db.query(
+      "SELECT * FROM users WHERE username = $1;",
+      [username],
+      (err, userRes) => {
+        if (err) console.log(`USERNAME CHECK ERROR: ${err}`)
+        else if (userRes.rows.length === 0) {
+          console.log('USERNAME DOES NOT EXIST. PLEASE SIGN UP')
+        } else {
+          console.log('INCORRECT PASSWORD')
+        }
+      // if (result.length > 0) { 
+      //   res.send(result)
+      // } else {
+      //   res.send({message: "wrong username/password combo"})
+      // }
+      })
+    } else console.log('SUCCESS!')
+  })
+})
+
+
+// app.get('/:id', (req, res) => {
+//   const newFav = req.params;
+//   db.query('SELECT * FROM people WHERE people._id = $1', [req.params.id])
+//     .then((result) => console.log(result.rows[0]))
+//     .catch((err) => console.log(`ERROR: ${err}`));
+// });
 
 
 
