@@ -8,33 +8,22 @@ import { BrowserRouter, Link, Route, Router, Switch } from 'react-router-dom';
 import NewWindow from 'react-new-window'
 import { render } from 'react-dom';
 import HomePage from '../components/homepage';
+import { useHistory } from "react-router"
 
 
 
 export default function App() {
-
-  // destructure useForm
-  const {register, handleSubmit, watch, errors} = useForm();
-  // define onSubmit handler function
-  const onFormSubmit = (data) => {
-      console.log(data);
-      
-
-    //   const signin = () => {
-    //     axios.get("/homepage", 
-    // //     {
-    // //         username: username,
-    // //         password: password,
-    // // }).then((res) => {
-    // //     if (res.data.message) {
-    // //         setLoginStatus(res.data.message)
-    // //     } else {
-    // //         setLoginStatus(res.data[0].username)
-    // //     }
-    // //     console.log(res)
-    // //   }); 
+    let history = useHistory();
     
-    // }
+    // destructure useForm
+    const {register, handleSubmit, watch, errors} = useForm();
+    // define onSubmit handler function
+    const onFormSubmit = (data) => {
+        console.log(data);
+    }
+    
+    function handleClick() {
+      history.push('/homepage')
   }
 
 
@@ -46,21 +35,21 @@ return (
     <form name="signin" onSubmit={handleSubmit(onFormSubmit)}>
         <input type="text" name="username" ref={register} placeholder="Username"></input>
         <input type="password" name="password" ref={register} placeholder="Password"></input>
-        <input type="submit"/>
+        <input type="submit" onClick={handleClick} />
     </form>
           <Link to="/signup"><button>Create an Account!</button></Link>
     </div>
       </Route>
       <Route path='/signup'>
-                    <div>
-                        <SignUp />
-                    </div>
+        <div>
+          <SignUp />
+         </div>
     </Route>
 
     <Route path='/homepage'>
-                    <div>
-                        <HomePage />
-                    </div>
+        <div>
+         <HomePage />
+        </div>
     </Route>
     </Switch>
 )
