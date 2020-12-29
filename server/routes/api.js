@@ -14,16 +14,6 @@
 // // import ________ from _____________
 
 // const mysql = require('mysql');
-<<<<<<< HEAD
-// const cors = require("cors");
-// const express = require('express');
-// const app = express();
-// const Axios = require('axios');
-// app.use(express.json());
-// app.use(cors())
-// const router = require('express');
-// const { ModuleFilenameHelpers } = require('webpack');
-=======
 // // const cors = require("cors");
 // const express = require('express');
 // const app = express();
@@ -31,7 +21,6 @@
 // // app.use(express.json());
 // // app.use(cors())
 // // const router = require('express')
->>>>>>> newBranch
 
 // /*
 // app.get('/profile/:name', function(req,res){
