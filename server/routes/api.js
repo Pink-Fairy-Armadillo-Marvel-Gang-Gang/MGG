@@ -1,3 +1,5 @@
+
+
 // // import path from 'path'
 
 // // import marvelModel  from '../model/marvelModel' 
@@ -113,4 +115,19 @@
 // // router.get('/homepage', (req, res) => {
 // //     res.status(200).sendFile(path.join(__dirname, '../client/homepage.html'));
 // // })
+
+
+// app.get('/:id', (req, res) => {
+//   const newFav = req.params;
+//   db.query('SELECT * FROM people WHERE people._id = $1', [req.params.id])
+//     .then((result) => console.log(result.rows[0]))
+//     .catch((err) => console.log(`ERROR: ${err}`));
+// });
+
+
+
+
 // module.exports = app
+
+
+
