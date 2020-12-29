@@ -7,6 +7,9 @@ import '../style.css';
 import HomePage from '../components/homepage';
 import { useHistory } from "react-router"
 import Home from '../components/homepage'
+import marvelBattle from './marvelBattle.png'
+import hulk from './hulk.png'
+import k from './marvel4k.png'
 
 
 export default function SignUp() {
@@ -30,7 +33,11 @@ return (
         <input type="text" name="secret" ref={register}  placeholder="Favorite Marvel Characeter"></input>
         <input type="submit" onClick={handleClick}/>
     </form>
+        <img src={marvelBattle}  className="img" alt="venom" width="360px" height="360px"/>
+        <img src={k}  className="img" alt="venom" width="575px" height="350px"/>
+        <img src={hulk}  className="img" alt="venom" width="200px" height="400px"/>
     </div>
+    
 )
   
 };
