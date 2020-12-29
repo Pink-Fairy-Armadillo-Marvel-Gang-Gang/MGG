@@ -1,116 +1,66 @@
 import React from 'react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import SignUp from '../components/signup';
+import Home from '../components/homepage'
+import { BrowserRouter, Link, Route, Router, Switch } from 'react-router-dom';
+import NewWindow from 'react-new-window'
+import { render } from 'react-dom';
+import HomePage from '../components/homepage';
+import { useHistory } from "react-router"
+import Venom from './VenomInNYC.png'
+import ironman from './Ironman&Buzz.png'
+import grut from './grut.png'
+import deadpool from './deadpool.png'
 
-// import '../style.css';
 
 
-function App() {
+
+export default function App() {
+    let history = useHistory();
+
   // destructure useForm
   const {register, handleSubmit, watch, errors} = useForm();
-
-    // register form
-    const {
-        register: register2,
-        errors: errors2,
-        handleSubmit: handleSubmit2
-      } = useForm({
-        mode: "onBlur"
-      });
-
-
-//use react hooks
-const [usernameReg, setUsernameReg] = useState('')
-const [passwordReg, setPasswordReg] = useState('')
-
-const [username, setUsername] = useState('')
-const [password, setPassword] = useState('')
-
-const [loginStatus, setLoginStatus] = useState('')
-
-
-  // define onSubmit handler function for login
+  // define onSubmit handler function
   const onFormSubmit = (data) => {
-      console.log('login', data);
-      setPassword(data.password);
-      setUsername(data.username);
-      console.log('login', data);
-      // vm: store username and password as environment variables to use when quering database? 
-      process.env.username = data.username;
-      process.env.password = data.password;
-      
+      console.log(data);
   }
 
-  // define onSubmit handler function for registration
-  const onFormSubmit2 = (data) => {
-    console.log('reg',data);
-    setPasswordReg(data.password);
-    setUsernameReg(data.username);
-    console.log('reg',data);
-
-    // vm: store username and password as environment variables to use when quering database? 
-    process.env.username = data.username;
-    process.env.password = data.password;
-
-    signup();
-}
+  function handleClick() {
+      history.push('/homepage')
+  }
 
 
-// axios post request // put this function in the form submit
-//   const signup = () => {
-//       Axios.post("http://localhost/8080/register", {
-//           username: usernameReg,
-//           password: passwordReg,
-//   }).then((res) => {
-//       console.log(response);
-//   }); 
-//   }
-
-const signup = () => {
-    axios.post("/signup", {
-        username: username,
-        password: password,
-}).then((res) => {
-    if (res.data.message) {
-        setLoginStatus(res.data.message)
-    } else {
-        setLoginStatus(res.data[0].username)
-    }
-    console.log(res)
-  }); 
-}
-
-
-// console.log('login status',loginStatus)
-  // invoke watch function from useForm destructuring
-
-//   return our html/componenet stuf
 return (
+    <Switch>
+
+    <Route exact path='/'>
     <div>
-    <h1>LOGIN</h1>
     <form name="signin" onSubmit={handleSubmit(onFormSubmit)}>
         <input type="text" name="username" ref={register} placeholder="Username"></input>
         <input type="password" name="password" ref={register} placeholder="Password"></input>
-        <input type="submit"/>
+        <input type="submit" onClick={handleClick} />
     </form>
-
-    <h3>login status here here{loginStatus}</h3>
-
-   
-
-    <h1>Registration</h1>
-    <form name="signin" onSubmit={handleSubmit2(onFormSubmit2)}>
-        <input type="text" name="username2" ref={register2} placeholder="Username"></input>
-        <input type="password" name="password2" ref={register2} placeholder="Password"></input>
-        <input type="submit"/>
-    </form>
+          <Link to="/signup"><button>Create an Account!</button></Link>
+          
     </div>
+    <img src={ironman}  className="img" alt="venom" width="280px" height="400px"/>
+            <img src={Venom}  className="img" alt="venom" width="280px" height="400px"/>
+            <img src={grut}  className="img" alt="venom" width="320px" height="400px"/>
+            <img src={deadpool}  className="img" alt="venom" width="320px" height="400px"/>
+      </Route>
+      <Route path='/signup'>
+        <div>
+          <SignUp />
+         </div>
+    </Route>
+
+    <Route path='/homepage'>
+        <div>
+         <HomePage />
+        </div>
+    </Route>
+    </Switch>
 )
-  
 };
-
-
-export default App
-
-

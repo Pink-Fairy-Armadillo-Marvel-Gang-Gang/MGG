@@ -10,14 +10,13 @@
 // // import ________ from _____________
 
 // const mysql = require('mysql');
-// const cors = require("cors");
+// // const cors = require("cors");
 // const express = require('express');
 // const app = express();
 // const Axios = require('axios');
-// app.use(express.json());
-// app.use(cors())
-// const router = require('express');
-// const { ModuleFilenameHelpers } = require('webpack');
+// // app.use(express.json());
+// // app.use(cors())
+// // const router = require('express')
 
 // /*
 // app.get('/profile/:name', function(req,res){
@@ -45,6 +44,31 @@
 
 // */
 // // post route to sign up (this will be the redirect to the user database)
+
+
+
+// // possible sign up model sql
+// //------ sample sign up model sql
+
+
+// // const db = mysql.createConnection({
+// //   user: "root",
+// //   host: "localhost",
+// //   password: "password",
+// //   database: "LoginSystem",
+// // })
+
+// app.post('/signup', (req, res) => {
+// const username = req.body.username;
+// const password = req.body.password;
+// console.log('test at backend')
+//   // db.query("INSERT INTO users (username, password) VALUES (?,?)",
+//   //  [username, password],
+//   //  (err, result) => {
+//   //    console.log(err)
+//   //  }
+//   // );
+// });
 
 
 // app.post('/login', (req, res) => {
@@ -131,3 +155,4 @@
 
 
 
+// module.exports = app
