@@ -13,7 +13,7 @@ router.post("/signup",
   loginController.createUsersTable,
   loginController.newUserSignUp,
   (req, res) => {
-    return res.sendStatus(200);
+    return res.status(200).json(res.locals.userData);
 });
 
 
@@ -21,7 +21,7 @@ router.post("/signup",
 router.post("/signin", 
   loginController.userLogin,
   (req, res) => {
-    return res.sendStatus(200);
+    return res.status(200).json(res.locals.userData);
 });
 
 module.exports = router;

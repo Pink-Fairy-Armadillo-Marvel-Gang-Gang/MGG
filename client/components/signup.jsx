@@ -18,11 +18,29 @@ export default function SignUp() {
   const {register, handleSubmit, watch, errors} = useForm();
   // define onSubmit handler function
   const onFormSubmit = (data) => {
-      console.log(data);
+      const {username, password, favChar} = data;
+      const body = {username, password};
+    fetch('/login/signup', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "Application/JSON"
+      },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      if (data.username && data.password) {
+        history.push('/homepage')
+      }
+    })
+    // TODO render the error message
+    .catch(err => alert('User already exists', err))
   }
-    function handleClick() {
-    history.push('/homepage')
-    }
+  
+  
+  function handleClick() {
+  }
 
 //   return our html/componenet stuf
 return (
@@ -30,7 +48,7 @@ return (
     <form name="signup" onSubmit={handleSubmit(onFormSubmit)}>
         <input type="text" name="username" ref={register} placeholder="Username"></input>
         <input type="password" name="password" ref={register} placeholder="Password"></input>
-        <input type="text" name="secret" ref={register}  placeholder="Favorite Marvel Characeter"></input>
+        <input type="text" name="favChar" ref={register}  placeholder="Favorite Marvel Characeter"></input>
         <input type="submit" onClick={handleClick}/>
     </form>
         <img src={marvelBattle}  className="img" alt="venom" width="360px" height="360px"/>

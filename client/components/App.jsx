@@ -24,11 +24,28 @@ export default function App() {
   const {register, handleSubmit, watch, errors} = useForm();
   // define onSubmit handler function
   const onFormSubmit = (data) => {
+    const {username, password} = data;
+    const body = {username, password};
+    fetch('/login/signin', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "Application/JSON"
+      },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+    .then(data => {
       console.log(data);
+      if (data.username && data.password) {
+        history.push('/homepage')
+      }
+    })
+    // TODO render the error message
+    .catch(err => alert('Incorrect username or password', err))
   }
 
   function handleClick() {
-      history.push('/homepage')
+      // history.push('/homepage')
   }
 
 

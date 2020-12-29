@@ -46,6 +46,7 @@ loginController.newUserSignUp = (req, res, next) => {
       else if (err) return next(err);
       else {
         console.log("SIGNUP SUCCESSFUL!");
+        res.locals.userData = { username, password };
         return next();
       }
     }
@@ -75,9 +76,11 @@ loginController.userLogin = (req, res, next) => {
             return next();
           }
         );
+      } else {
+        console.log("SUCCESS!");
+        res.locals.userData = { username, password };
+        return next();
       }
-      console.log("SUCCESS!");
-      return next();
     }
   );
 };
